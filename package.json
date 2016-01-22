@@ -1,0 +1,28 @@
+{
+  "name": "unity-n-bind",
+  "version": "0.0.1",
+  "description": "n-bind",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shadowmint/unity-n-bind.git"
+  },
+  "files": [
+    "index.js",
+    "scripts",
+    "src"
+  ],
+  "author": "douglas.linder@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shadowmint/unity-n-bind/issues"
+  },
+  "homepage": "https://github.com/shadowmint/unity-n-bind",
+  "scripts": {
+    "postinstall": "node scripts/postinstall.js"
+  },
+  "dependencies": {
+    "ncp": "^2.0.0",
+    "mkdirp": "^0.5.1"
+  }
+}
