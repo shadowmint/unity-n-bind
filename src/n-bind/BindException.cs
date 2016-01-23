@@ -11,7 +11,11 @@ namespace N.Package.Bind
 
         // Attempting to created an instance of TImpl didn't work.
         // See the innerException value for details
-        CREATE_INSTANCE_FAILED
+        CREATE_INSTANCE_FAILED,
+
+        // An attempt was made to bind a null object to an interface,
+        // eg. .Register<IMyThing>(foo.GetComponent<MyThing>())
+        NULL_BINDING,
     }
 
     /// Custom error type for this module

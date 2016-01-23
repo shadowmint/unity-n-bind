@@ -5,7 +5,10 @@ public class ImplA : IDepA { }
 
 public class ImplA2 : IDepA { }
 
-public class ImplAComponent : MonoBehaviour, IDepA { }
+public class ImplComponent : MonoBehaviour, IDepCmp
+{
+    public IDepB B { get; set; }
+}
 
 public class ImplB : IDepB
 {
@@ -17,5 +20,6 @@ public class ImplRecursive : IDepC
     public IDepA A { get; set; }
     public IDepB B { get; set; }
     public IDepC C { get; set; }
+    public IDepCmp Component { get; set; }
 }
 #endif

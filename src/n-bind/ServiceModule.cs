@@ -1,9 +1,9 @@
 namespace N.Package.Bind
 {
     /// Extend this class to bind services to the service registry
-    public abstract class ServiceModule
+    public interface IServiceModule
     {
         /// Bind services here
-        public abstract void Register(ServiceRegistry registry);
+        void Register(ServiceRegistry registry);
     }
 }

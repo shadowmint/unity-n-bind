@@ -23,7 +23,7 @@ namespace N.Package.Bind
         { binder = new PropertyBinder(this); }
 
         /// Register a set of services
-        public void Register(ServiceModule module)
+        public void Register(IServiceModule module)
         { module.Register(this); }
 
         /// Register a single service binding
@@ -31,6 +31,7 @@ namespace N.Package.Bind
         {
             if (bindings.ContainsKey(typeof(TInterface)))
             { throw ErrDuplicateBinding<TInterface, TImpl>(); }
+
             bindings[typeof(TInterface)] = typeof(TImpl);
         }
 
@@ -38,11 +39,15 @@ namespace N.Package.Bind
         /// Notice this is a destructive function; binding an instance automatically
         /// runs the PropertyBinder on it to bind child values, regardless of their
         /// current values.
-        public void Register<TInterface, TImpl>(TInterface instance) where TImpl : TInterface where TInterface : class
+        public void Register<TInterface, TImpl>(TImpl instance) where TInterface : class where TImpl : TInterface
         {
             if (bindings.ContainsKey(typeof(TInterface)))
-            { throw ErrDuplicateBinding<TInterface, TImpl>(); }
-            bindings[typeof(TInterface)] = typeof(TImpl);
+            { throw ErrDuplicateBinding<TInterface>(instance); }
+
+            if (instance == null)
+            { throw ErrNullInstance<TInterface>();  }
+
+            bindings[typeof(TInterface)] = instance.GetType();
             instances[typeof(TInterface)] = instance;
             Bind(instance);
         }
@@ -111,6 +116,20 @@ namespace N.Package.Bind
             var rtn = CreateInstance(typeof(T)) as T;
             Bind(rtn);
             return rtn;
+        }
+
+        /// Error factory: null instance
+        private BindException ErrNullInstance<TInterface>()
+        {
+            return new BindException(BindError.NULL_BINDING,
+            "Cannot bind {0} to null object instance", typeof(TInterface));
+        }
+
+        /// Error factory: duplicate
+        private BindException ErrDuplicateBinding<TInterface>(TInterface instance)
+        {
+            return new BindException(BindError.DUPLICATE_BINDING,
+            "Cannot bind {0} to {1}; {0} is already bound", typeof(TInterface), instance);
         }
 
         /// Error factory: duplicate

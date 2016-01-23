@@ -3,9 +3,9 @@ using NUnit.Framework;
 using N.Package.Bind;
 using N;
 
-public class TestServiceModule : ServiceModule
+public class TestServiceModule : IServiceModule
 {
-    public override void Register(ServiceRegistry registry)
+    public void Register(ServiceRegistry registry)
     {
         registry.Register<IDepA, ImplA>();
     }
@@ -49,8 +49,8 @@ public class ServiceRegistryTests : N.Tests.Test
     public void test_manual_register_gameobject()
     {
         var registry = new ServiceRegistry();
-        var rp = this.SpawnComponent<ImplAComponent>();
-        registry.Register<IDepA, ImplAComponent>(rp);
+        var rp = this.SpawnComponent<ImplComponent>();
+        registry.Register<IDepCmp, ImplComponent>(rp);
         this.TearDown();
     }
 
