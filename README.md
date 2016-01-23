@@ -46,7 +46,7 @@ No. This library only supports binding properties.
 
 No. Only public properties are supported.
 
-**Does this library include a to use IoC in for UI / Animation / XXX?**
+**Does this library include helpers to use IoC in for UI / Animation / XXX?**
 
 No. The only thing this library does is dependency injection.
 
