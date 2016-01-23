@@ -38,31 +38,31 @@ That is all.
 
 ### Can you...?
 
-- Can you use this with constructor based normal classes like `MyClass(IService service)`?
+#### Can you use this with constructor based normal classes like `MyClass(IService service)`?
 
 No. This library only supports binding properties.
 
-- Can you bind private properties?
+#### Can you bind private properties?
 
 No. Only public properties are supported.
 
-- Does this library include a to use IoC in for UI / Animation / XXX?
+#### Does this library include a to use IoC in for UI / Animation / XXX?
 
 No. The only thing this library does is dependency injection.
 
-- Can I use this to inject `GameObject` instances into a class?
+#### Can I use this to inject `GameObject` instances into a class?
 
 Yes. Use `registry.Register<TInterface, TImpl>(instance)` where instance is
 `TImpl : MonoBehaviour, TInterface`.
 
-- If I have to explicitly pick `TImpl` for binding instances, doesn't that
+#### If I have to explicitly pick `TImpl` for binding instances, doesn't that
 mean I can't really bind to instances as runtime?
 
 Have a look at the `demo` folder for an example that allows you to select
 a prefab in your `ServiceModule` component and inject it into another
 `GameObject` that uses it.
 
-- Does this library need any of your other weird `n-foo` libraries to run?
+#### Does this library need any of your other weird `n-foo` libraries to run?
 
 No. It uses `n-core` for tests, so if you want to run the tests you'll need
 that, but it has no other dependencies.
@@ -101,7 +101,7 @@ For convenience the `Registry.Default` instance can be used.
 You may want to ensure your service module is invoked before any other scripts
 under `Edit > Project Settings > Script Execution Order`:
 
-![Run service module first](https://raw.github.com/shadowmint/unity-n-bind/master/docs/images/order.png)
+![Run service module first](https://raw.github.com/shadowmint/unity-n-bind/master/docs/images/order.png =150px)
 
 Then call one of the three magic methods:
 
