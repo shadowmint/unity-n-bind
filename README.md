@@ -101,7 +101,7 @@ For convenience the `Registry.Default` instance can be used.
 You may want to ensure your service module is invoked before any other scripts
 under `Edit > Project Settings > Script Execution Order`:
 
-<img src="https://raw.github.com/shadowmint/unity-n-bind/master/docs/images/order.png" width="150px"/>
+<img src="https://raw.github.com/shadowmint/unity-n-bind/master/docs/images/order.png" width="250px"/>
 
 Then call one of the three magic methods:
 
