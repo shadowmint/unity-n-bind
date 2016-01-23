@@ -11,7 +11,6 @@ namespace N.Package.Bind.Core
         {
             foreach (var pp in self.GetProperties(BindingFlags.Public | BindingFlags.Instance))
             {
-                N._.Log("properties... {0}", pp);
                 if (pp.CanWrite)
                 {
                     yield return pp;

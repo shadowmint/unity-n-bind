@@ -7,7 +7,6 @@ public class PropertyBinderTests : N.Tests.Test
     [Test]
     public void test_bind_no_properties()
     {
-        N._.Log("Hello?");
         var registry = new EmptyServiceRegistry();
         var instance = new PropertyBinder(registry);
         var sample = new SampleClass();

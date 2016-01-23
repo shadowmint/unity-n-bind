@@ -26,14 +26,14 @@ namespace N.Package.Bind.Core
             foreach (var prop in instance.GetType().GetSetProperties())
             {
                 var type = prop.PropertyType;
-                var factory = this.factory.MakeGenericMethod(type);
-                var resolved = factory.Invoke(registry, null);
-                N._.Log("value waS: {0}", resolved);
-                if (resolved != null)
+                if (!type.IsValueType)
                 {
-                    N._.Log("Trying to set value {0} from {1}", prop.PropertyType, resolved);
-                    prop.SetValue(instance, resolved, null);
-                    N._.Log("Successfully set property");
+                    var factory = this.factory.MakeGenericMethod(type);
+                    var resolved = factory.Invoke(registry, null);
+                    if (resolved != null)
+                    {
+                        prop.SetValue(instance, resolved, null);
+                    }
                 }
             }
         }
