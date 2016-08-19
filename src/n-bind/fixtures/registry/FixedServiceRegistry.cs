@@ -4,14 +4,15 @@ using System.Collections.Generic;
 
 public class FixedServiceRegistry : IServiceRegistry
 {
-    public Dictionary<System.Type, object> bound = new Dictionary<System.Type, object>();
-    public T Resolve<T>() where T : class
+  public Dictionary<System.Type, object> Bound = new Dictionary<System.Type, object>();
+
+  public T Resolve<T>() where T : class
+  {
+    if (Bound.ContainsKey(typeof(T)))
     {
-        if (bound.ContainsKey(typeof(T)))
-        {
-            return bound[typeof(T)] as T;
-        }
-        return null;
+      return Bound[typeof(T)] as T;
     }
+    return null;
+  }
 }
 #endif
