@@ -2,5 +2,5 @@ using UnityEngine;
 
 public class BlockImpl : BlockBase
 {
-    public new string name;
+  public new string name;
 }

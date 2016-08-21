@@ -3,16 +3,16 @@ using UnityEngine;
 
 public class ServiceModule : MonoBehaviour, IServiceModule
 {
-    public BlockBase blockType;
+  public BlockBase BlockType;
 
-    public void Start()
-    {
-        Registry.Default.Register(this);
-    }
+  public void Start()
+  {
+    Registry.Default.Register(this);
+  }
 
-    public void Register(ServiceRegistry registry)
-    {
-        registry.Register<IBlock, BlockBase>(blockType.GetComponent<BlockBase>());
-        registry.Register<ISpawnService, SpawnService>();
-    }
+  public void Register(ServiceRegistry registry)
+  {
+    registry.Register<IBlock, BlockBase>(BlockType.GetComponent<BlockBase>());
+    registry.Register<ISpawnService, SpawnService>();
+  }
 }

@@ -3,26 +3,27 @@ using UnityEngine;
 
 public class UsesObjects : MonoBehaviour
 {
-    public IBlock Block
+  public IBlock Block
+  {
+    get { return _block; }
+    set
     {
-        get { return block_; }
-        set
-        {
-            block = value.GameObject;
-            block_ = value;
-        }
+      block = value.GameObject;
+      _block = value;
     }
-    private IBlock block_;
+  }
 
-    // So we can see it in the editor
-    public GameObject block;
-    public GameObject spawned;
+  private IBlock _block;
 
-    public ISpawnService Spawner { get; set; }
+  // So we can see it in the editor
+  public GameObject block;
+  public GameObject spawned;
 
-    public void Start()
-    {
-        Registry.Default.Bind(this);
-        spawned = Spawner.SpawnPrefab(block);
-    }
+  public ISpawnService Spawner { get; set; }
+
+  public void Start()
+  {
+    Registry.Default.Bind(this);
+    spawned = Spawner.SpawnPrefab(block);
+  }
 }
