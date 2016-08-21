@@ -39,6 +39,8 @@ Library/shadercompiler-64bit-*.log
 Library/shadercompiler-32bit-*.log
 Library/LastSceneManagerSetup.txt
 Library/shadercompiler-*
+Library/CurrentLayout.dwlt
+Library/UnityAssemblies
 .DS_Store
 
 node_modules

@@ -4,18 +4,18 @@ using System;
 
 namespace N.Package.Bind.Core
 {
-    public static class TypeExtensions
+  public static class TypeExtensions
+  {
+    /// Yield the set of public properties with set methods on the type
+    public static IEnumerable<PropertyInfo> GetSetProperties(this Type self)
     {
-        /// Yield the set of public properties with set methods on the type
-        public static IEnumerable<PropertyInfo> GetSetProperties(this Type self)
+      foreach (var pp in self.GetProperties(BindingFlags.Public | BindingFlags.Instance))
+      {
+        if (pp.CanWrite)
         {
-            foreach (var pp in self.GetProperties(BindingFlags.Public | BindingFlags.Instance))
-            {
-                if (pp.CanWrite)
-                {
-                    yield return pp;
-                }
-            }
+          yield return pp;
         }
+      }
     }
+  }
 }
