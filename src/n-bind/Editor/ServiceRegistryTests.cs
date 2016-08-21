@@ -2,6 +2,8 @@
 using NUnit.Framework;
 using N.Package.Bind;
 using N;
+using N.Package.Core;
+using N.Package.Core.Tests;
 
 public class TestServiceModule : IServiceModule
 {
@@ -11,7 +13,7 @@ public class TestServiceModule : IServiceModule
   }
 }
 
-public class ServiceRegistryTests : N.Tests.Test
+public class ServiceRegistryTests : TestCase
 {
   [Test]
   public void test_manual_registration()

@@ -2,8 +2,10 @@
 using NUnit.Framework;
 using N.Package.Bind;
 using N;
+using N.Package.Core;
+using N.Package.Core.Tests;
 
-public class DefaultServiceRegistryTests : N.Tests.Test
+public class DefaultServiceRegistryTests : TestCase
 {
   /// Reset registry and return a new one to test with
   private ServiceRegistry fixture()
