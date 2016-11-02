@@ -62,6 +62,20 @@ namespace N.Package.Bind
       Bind(instance);
     }
 
+    /// Register the type T as all of its implemented interfaces
+    public void Register<TImpl>()
+    {
+      foreach (var interfaceType in typeof(TImpl).GetInterfaces())
+      {
+        if (_bindings.ContainsKey(interfaceType))
+        {
+          throw ErrDuplicateBinding(interfaceType, typeof(TImpl));
+        }
+
+        _bindings[interfaceType] = typeof(TImpl);
+      }
+    }
+
     /// Clear the binding on a type
     public void Clear<TInterface>()
     {
@@ -157,12 +171,19 @@ namespace N.Package.Bind
         "Cannot bind {0} to {1}; {0} is already bound", typeof(TInterface), typeof(TImpl));
     }
 
+    /// Error factory: duplicate by type
+    private static BindException ErrDuplicateBinding(Type interfaceType, Type implType)
+    {
+      return new BindException(BindError.DuplicateBinding,
+        "Cannot bind {0} to {1}; {0} is already bound", interfaceType, implType);
+    }
+
     /// Error factory: create failed
-    private static BindException ErrCreateFailed(System.Type type, Exception exception)
+    private static BindException ErrCreateFailed(Type type, Exception exception)
     {
       return new BindException(BindError.CreateInstanceFailed,
-        "Unable to create instance of {0}: {1}", type, exception.Message)
-      {InnerException = exception};
+          "Unable to create instance of {0}: {1}", type, exception.Message)
+        {InnerException = exception};
     }
   }
 }
