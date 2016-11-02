@@ -16,6 +16,7 @@ public class FixtureServices : IServiceModule
     registry.Register<IDepB, ImplB>();
     registry.Register<IDepC, ImplRecursive>();
     registry.Register<IDepCmp, ImplComponent>(_component);
+    registry.Register<ImplAutoDep>();
   }
 }
 #endif

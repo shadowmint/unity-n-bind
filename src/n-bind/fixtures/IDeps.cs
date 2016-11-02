@@ -20,4 +20,16 @@ public interface IDepC
   IDepC C { get; set; }
   IDepCmp Component { get; set; }
 }
+
+public interface IAutoDepA
+{
+}
+
+public interface IAutoDepB
+{
+}
+
+public interface IAutoDepC<T>
+{
+}
 #endif

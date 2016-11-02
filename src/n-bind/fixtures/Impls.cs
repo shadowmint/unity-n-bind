@@ -26,4 +26,8 @@ public class ImplRecursive : IDepC
   public IDepC C { get; set; }
   public IDepCmp Component { get; set; }
 }
+
+public class ImplAutoDep: IAutoDepA, IAutoDepB, IAutoDepC<int>, IAutoDepC<float>
+{
+}
 #endif

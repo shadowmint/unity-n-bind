@@ -18,6 +18,18 @@ public class DefaultServiceRegistryTests : TestCase
   }
 
   [Test]
+  public void test_auto_registration_of_implemented_interfaces()
+  {
+    var instance = fixture();
+    Assert(instance.Resolve<IAutoDepA>() != null);
+    Assert(instance.Resolve<IAutoDepB>() != null);
+    Assert(instance.Resolve<IAutoDepC<int>>() != null);
+    Assert(instance.Resolve<IAutoDepC<float>>() != null);
+    Assert(instance.Resolve<IAutoDepC<bool>>() == null);
+    this.TearDown();
+  }
+
+  [Test]
   public void test_resolve_class()
   {
     var instance = fixture().CreateInstance<SampleClass>();
