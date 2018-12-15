@@ -138,11 +138,11 @@ From your unity project folder:
 
     npm init
     npm install shadowmint/unity-n-bind --save
-    echo Assets/packages >> .gitignore
-    echo Assets/packages.meta >> .gitignore
+    echo Assets/pkg-all >> .gitignore
+    echo Assets/pkg-all.meta >> .gitignore
 
 The package and all its dependencies will be installed in
-your Assets/packages folder.
+your Assets/pkg-all folder.
 
 ## Development
 
