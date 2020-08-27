@@ -1,11 +1,14 @@
 #if N_BIND_TESTS
-using N.Package.Bind.Core;
+using N.Package.Bind.Core.interfaces;
 
-public class EmptyServiceRegistry : IServiceRegistry
+namespace N.Package.Bind.fixtures.registry
 {
-  public T Resolve<T>() where T : class
-  {
-    return null;
-  }
+    public class EmptyServiceRegistry : IServiceRegistry
+    {
+        public T Resolve<T>() where T : class
+        {
+            return null;
+        }
+    }
 }
 #endif

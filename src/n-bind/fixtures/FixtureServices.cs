@@ -1,22 +1,23 @@
 #if N_BIND_TESTS
-using N.Package.Bind;
-
-public class FixtureServices : IServiceModule
+namespace N.Package.Bind.fixtures
 {
-  private readonly ImplComponent _component;
+    public class FixtureServices : IServiceModule
+    {
+        private readonly ImplComponent _component;
 
-  public FixtureServices(ImplComponent component)
-  {
-    this._component = component;
-  }
+        public FixtureServices(ImplComponent component)
+        {
+            this._component = component;
+        }
 
-  public void Register(ServiceRegistry registry)
-  {
-    registry.Register<IDepA, ImplA>();
-    registry.Register<IDepB, ImplB>();
-    registry.Register<IDepC, ImplRecursive>();
-    registry.Register<IDepCmp, ImplComponent>(_component);
-    registry.Register<ImplAutoDep>();
-  }
+        public void Register(ServiceRegistry registry)
+        {
+            registry.Register<IDepA, ImplA>();
+            registry.Register<IDepB, ImplB>();
+            registry.Register<IDepC, ImplRecursive>();
+            registry.Register<IDepCmp, ImplComponent>(_component);
+            registry.Register<ImplAutoDep>();
+        }
+    }
 }
 #endif
