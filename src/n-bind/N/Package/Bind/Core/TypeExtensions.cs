@@ -10,12 +10,8 @@ namespace N.Package.Bind.Core
         public static IEnumerable<PropertyInfo> GetSetProperties(this Type self)
         {
             foreach (var pp in self.GetProperties(BindingFlags.Public | BindingFlags.Instance))
-            {
                 if (pp.CanWrite)
-                {
                     yield return pp;
-                }
-            }
         }
     }
 }
